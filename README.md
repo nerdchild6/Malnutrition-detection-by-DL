@@ -21,6 +21,14 @@ You must have the following software installed:
     * Open the Octave GUI.
     * In the "Current Directory" browser, navigate to the folder where you downloaded this project.
 
+| Main Menu | Image Input | Feature Extraction |
+| :---: | :---: | :---: |
+| <img width="300" alt="Main menu" src="https://github.com/user-attachments/assets/c4088e2e-5de8-4949-9cba-0f41c5403397" /> | <img width="300" alt="Image input screen" src="https://github.com/user-attachments/assets/e27f0144-a8a2-48f7-875e-229ee91c816a" /> | <img width="300" alt="Feature extraction process" src="https://github.com/user-attachments/assets/00f690bf-87a8-45ac-a3a9-2f0c11fa8188" /> |
+
+| Detection Result (Good) | Detection Result (Poor) |
+| :---: | :---: |
+| <img width="300" alt="Good nutrition result" src="https://github.com/user-attachments/assets/031748b5-9eb9-43b7-9524-9e3ab5432e76" /> | <img width="300" alt="Poor nutrition result" src="https://github.com/user-attachments/assets/133bb978-7ef7-4d7b-b1a4-8223f215b56b" /> |
+
 2.  **Configure Python Path:**
     * Open the `malnutrition_detector_octave_gui.m` file in a text editor.
     * Find the `python_executable_path` variable.
@@ -44,13 +52,4 @@ You must have the following software installed:
 
 ---
 
-## 🖼️ Project Gallery
-
-| Main Menu | Image Input | Feature Extraction |
-| :---: | :---: | :---: |
-| <img width="300" alt="Main menu" src="https://github.com/user-attachments/assets/c4088e2e-5de8-4949-9cba-0f41c5403397" /> | <img width="300" alt="Image input screen" src="https://github.com/user-attachments/assets/e27f0144-a8a2-48f7-875e-229ee91c816a" /> | <img width="300" alt="Feature extraction process" src="https://github.com/user-attachments/assets/00f690bf-87a8-45ac-a3a9-2f0c11fa8188" /> |
-
-| Detection Result (Good) | Detection Result (Poor) |
-| :---: | :---: |
-| <img width="300" alt="Good nutrition result" src="https://github.com/user-attachments/assets/031748b5-9eb9-43b7-9524-9e3ab5432e76" /> | <img width="300" alt="Poor nutrition result" src="https://github.com/user-attachments/assets/133bb978-7ef7-4d7b-b1a4-8223f215b56b" /> |
 
