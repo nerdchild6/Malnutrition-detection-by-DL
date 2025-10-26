@@ -4,7 +4,7 @@
 function malnutrition_detector_octave_gui()
     % --- Configuration (User MUST update these paths) ---
     % NOTE: Paths are retained from your input but must be correct for Octave to run Python.
-    python_executable_path = 'C:\Users\dataEngineer\Desktop\multrition\mulmutrition\Scripts\python.exe';
+    python_executable_path = 'C:\Users\dataEngineer\Desktop\CV\Project\multrition\mulmutrition\Scripts\python.exe';
     python_script_name = 'malnutrition_predictor.py';
 
     % --- Global Variables for GUI state ---
@@ -196,13 +196,16 @@ function malnutrition_detector_octave_gui()
 
     result_text_h = 0.07;
     app_data.h_result_text = uicontrol('Parent', control_parent, ...
-        'Style', 'text', ...
+        'Style', 'edit', ... % Changed from 'text' to 'edit' for scrollability
         'String', 'Prediction Result: Awaiting run.', ...
         'Units', 'normalized', ...
         'Position', [0.05 y_pos-result_text_h 0.9 result_text_h], ...
         'FontWeight', 'bold', ...
         'BackgroundColor', [1 1 1], ...
-        'HorizontalAlignment', 'left');
+        'HorizontalAlignment', 'left', ...
+        'Max', 5, ... % Enable multi-line behavior
+        'Min', 1, ...
+        'Enable', 'inactive'); % Make it read-only but allow scrolling/selection
     % Final Y position is now higher up in the inner panel.
 
 
@@ -398,6 +401,21 @@ function add_operation_callback(~, ~)
             if ~isempty(str_val) && isscalar(num_val) && ~isnan(num_val)
                 val = num_val;
             end
+        end
+    end
+
+    % --- PRE-VALIDATION FOR INCOMPATIBLE OPERATIONS ---
+    if strcmp(selected_op_name, 'color_segmentation') && ~isempty(app_data.op_list)
+        last_op_cell = app_data.op_list{end};
+        last_op_name = last_op_cell{1};
+        % List of operations that produce a non-RGB (binary/grayscale) output
+        non_rgb_ops = {'otsu_thresholding', 'dilation', 'erosion', 'canny_edge_detection'};
+
+        if any(strcmp(last_op_name, non_rgb_ops))
+            is_valid = false;
+            error_msg = ['ERROR: "color_segmentation" requires an RGB image. The previous step ("' last_op_name '") produces a binary image.'];
+            set(app_data.h_result_text, 'string', error_msg, 'BackgroundColor', [1 0.7 0.7]);
+            return; % Exit the function early
         end
     end
 
@@ -607,7 +625,3 @@ function run_prediction_callback(~, ~)
         end
     end
 end
-
-
-
-
