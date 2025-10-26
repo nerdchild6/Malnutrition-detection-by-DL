@@ -24,7 +24,7 @@ You must have the following software installed:
     ```
     * Run this command for activate environment:
     ```bash
-    .\Activate.ps1
+    .\my_env\Scripts\Activate.ps1
     ```
     * Run this command for install dependencies
     ```bash
