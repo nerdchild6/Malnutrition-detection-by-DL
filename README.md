@@ -1,6 +1,49 @@
-# Malnutrition Detector (Octave GUI)
+# Smart Image Processing Toolbox for Malnutrition Detection
 
-This project uses a combination of Octave and Python to create a simple graphical interface for detecting malnutrition from facial images.
+This repository contains the source code for the university project: **Malnutrition Detection using Deep Learning or ML**. It serves as a proof-of-concept for building a robust, modular Image Processing Toolbox in **GNU Octave** and integrating it with a **Python/TensorFlow** backend for specialized deep learning inference.
+
+## 🌟 Overview & Core Objectives
+
+The goal was to create a flexible, user-friendly graphical interface (GUI) that enables users to construct a custom image processing pipeline and apply it to a complex classification task.
+
+### Key Deliverables:
+
+1. **Comprehensive Toolbox:** Implementation of **13 core image processing functions** across Enhancement, Segmentation, and Geometric modules.
+
+2. **Hybrid Architecture:** Establishing a reliable communication bridge between the Octave frontend and the Python ML environment.
+
+3. **State Management:** Developing a system to prevent pipeline crashes due to data type and channel mismatches (e.g., color operation following grayscale).
+
+## 💻 System Architecture
+
+The project utilizes a **Hybrid Model** (Octave ↔ Python) to maximize performance and flexibility while meeting the project's technological constraints.
+
+| Component | Technology | Primary Role | 
+| ----- | ----- | ----- | 
+| **Frontend/GUI** | GNU Octave (`.m` files) | User interaction, pipeline construction, visualization. | 
+| **Toolbox Core** | GNU Octave (13 functions) | Executes preprocessing steps (e.g., Filtering, Rotation). | 
+| **Inter-Process Bridge** | Octave `system()` command (`run_malnutrition_detector.m`) | Serializes the processing chain into JSON and executes the Python script. | 
+| **ML Backend** | Python 3, TensorFlow/Keras | Loads the CNN model (`.h5`), runs inference, and returns the classification result. | 
+
+## 🛠️ Implemented Toolbox Features (13 Functions)
+
+The GUI allows users to combine any of these 13 functions sequentially:
+
+| Module | Operation Code (Used in Pipeline) | Function File | 
+| ----- | ----- | ----- | 
+| **Enhancement** | `brightness_contrast` | `adjust_brightness_contrast.m` | 
+|  | `hist_equalization` | `apply_hist_equalization.m` | 
+|  | `laplacian_sharpening` | `apply_laplacian_sharpening.m` | 
+|  | `mean_filter`, `median_filter` | `apply_mean_filter.m`, `apply_median_filter.m` | 
+| **Segmentation** | `otsu_thresholding` | `apply_otsu_thresholding.m` | 
+|  | `canny_edge_detection` | `apply_canny_edge_detection.m` | 
+|  | `color_segmentation` | `apply_color_segmentation.m` | 
+|  | `dilation`, `erosion` | `apply_dilation.m`, `apply_erosion.m` | 
+| **Geometric** | `rotation`, `cropping`, `resizing` | `apply_rotation.m`, `apply_cropping.m`, `apply_resizing.m` | 
+
+### **Feature Highlight: Robust State Management**
+
+To prevent the pipeline from crashing when a color-based operation (like `color_segmentation`) follows a grayscale operation (like `otsu_thresholding`), it will show the caution message for maintaining pipeline integrity.
 
 ---
 
