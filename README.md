@@ -99,9 +99,50 @@ You must have the following software installed:
     ```bash
     malnutrition_detector_octave_gui
     ```
-
 3.  The application's GUI should now launch.
+<img width="960" height="505" alt="image" src="https://github.com/user-attachments/assets/6e09bc5b-ffcf-4408-a422-9750c9ce32ad" />
 
 ---
+## 👥 Project Structure & Team Roles
+
+This project was developed by a team focused on integrating **classical image processing techniques (Octave)** with **modern deep learning (Python)** to create a robust diagnostic prototype.
+
+---
+
+### 🎨 Frontend GUI & Integration Engineer — [Worrawit Klangsaeng]
+
+- **`malnutrition_detector_octave_gui.m`**  
+  The main application interface and Octave GUI structure.
+
+- **`run_malnutrition_detector.m`**  
+  The core integration script responsible for:
+  - Managing the processing pipeline state  
+  - Orchestrating the system call to the Python inference module  
+
+---
+
+### ⚙️ Image Processing Engineer — [Thareerat Jarungruk]
+
+- **All 13 `.m` files** (e.g., `adjust_brightness_contrast.m`, `apply_rotation.m`, etc.)  
+  Implements the complete set of **13 core image processing functions** across:
+  - Enhancement Module  
+  - Segmentation Module  
+  - Geometric Module  
+---
+
+### 🧠 Machine Learning & Inference Engineer — [Thanapat Nasa]
+
+- **`malnutrition_predictor.py`**  
+  Python-based inference script responsible for:
+  - Reading the processed image  
+  - Running the trained ML model  
+  - Outputting the final classification string  
+
+- **`trained_malnutrition_model.h5`**  
+  Pre-trained **Keras/MobileNetV2** deep learning model used for malnutrition classification.
+
+- **`requirements.txt`**  
+  Lists all required Python dependencies (TensorFlow, Keras, NumPy, etc.) for the ML environment.
+
 
 
